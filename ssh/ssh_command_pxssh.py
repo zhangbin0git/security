@@ -6,7 +6,7 @@
 # @File    : ssh_command_pxssh.py
 # @Software: PyCharm
 
-import pxssh
+from pexpect import pxssh
 
 def send_command(child, cmd):
     # 发送命令
@@ -24,5 +24,5 @@ def connect(user, host, password):
         exit(0)
 
 if __name__ == '__main__':
-    child = connect('root', '', 'toor')
+    child = connect('root', '192.168.1.110', 'toor')
     send_command(child, 'cat etc/shadow |grep root')

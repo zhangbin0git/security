@@ -143,7 +143,7 @@ dmypy.json
 # #################My configurations:
 # 忽略根目录下.idea文件夹中的所有文件
 # pycharm
-/.idea/*
+.idea/*
 
 # 忽略所有.class文件
 # *.class

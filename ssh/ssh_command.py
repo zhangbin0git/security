@@ -20,7 +20,7 @@ def send_command(child, cmd):
 
 def connet(user, host, password):
     # SSH返回的信息
-    ssh_newkey = 'Are you sure you want to continue conneting'
+    ssh_newkey = 'Are you sure you want to continue connecting (yes/no)?'
     conn_str = 'ssh ' + user + '@' + host
     child = pexpect.spawn(conn_str)
     ret = child.expect([pexpect.TIMEOUT, ssh_newkey, '[p|P]assword:'])
@@ -42,7 +42,7 @@ def main(user, host, password):
     send_command(child, 'cat /etc/shadow | grep root')
 
 if __name__ == '__main__':
-    main('root', '', 'toor')
+    main('root', '192.168.1.110', 'toor')
 
 
 
