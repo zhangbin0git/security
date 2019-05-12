@@ -10,13 +10,13 @@
 import pexpect
 
 # 系统返回的提示符号,常量
-PROMPT = ['# ', '>>> ', '> ', '\$ ']
+PROMPT = ['# ', '>>> ', '> ', '\$ ', '>']
 
 def send_command(child, cmd):
     """向ssh发送命令"""
     child.sendline(cmd)
     child.expect(PROMPT)
-    print(child.before)
+    print(child.before.decode('gbk'))
 
 def connet(user, host, password):
     # SSH返回的信息
@@ -39,10 +39,12 @@ def connet(user, host, password):
 
 def main(user, host, password):
     child = connet(user, host, password)
-    send_command(child, 'cat /etc/shadow | grep root')
+    # send_command(child, 'cat /etc/shadow | grep root')
+    send_command(child, 'dir')
 
 if __name__ == '__main__':
-    main('root', '192.168.1.110', 'toor')
+    main('zb', '192.168.1.2', 'zlx520')
+
 
 
 

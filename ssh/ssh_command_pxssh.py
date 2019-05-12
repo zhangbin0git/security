@@ -12,7 +12,7 @@ def send_command(child, cmd):
     # 发送命令
     child.sendline(cmd)
     child.prompt()
-    print(child.before)
+    print(child.before.decode('utf-8'))
 
 def connect(user, host, password):
     try:
@@ -24,5 +24,7 @@ def connect(user, host, password):
         exit(0)
 
 if __name__ == '__main__':
-    child = connect('root', '192.168.1.110', 'toor')
-    send_command(child, 'cat etc/shadow |grep root')
+    # child = connect('root', '127.0.0.1', 'toor')
+    child = connect('zb', '192.168.1.2', 'zlx520')
+    # send_command(child, 'cat /etc/shadow | grep root')
+    send_command(child, 'dir')

