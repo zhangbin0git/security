@@ -12,6 +12,8 @@ import requests
 import optparse
 from bs4 import BeautifulSoup
 from PIL import Image
+from PIL.ExifTags import TAGS
+import piexif
 
 def find_images(url):
     print('[+] Finding images on ' + url)
@@ -36,20 +38,24 @@ def download_image(imgtag):
 
 def test_for_exif(img_file_name):
     # 提取图片的元数据
-    try:
-        exif_data = {}
-        img_file = Image.open(img_file_name)
-        info = img_file.getexif()
-        print(info)
+    exif_data = {}
+    img_file = Image.open(img_file_name)
+    info = img_file._getexif()
+    if info:
+        for (tag, value) in info.items():
+            decoded = TAGS.get(tag, tag)
+            exif_data[decoded] = value
+        exif_gps = exif_data['GPSInfo']
+        print(str(exif_data['GPSInfo'][0], 'utf-8'))
+        if exif_gps:
+            print('[*] ' + img_file_name + 'contains GPS Metadata')
 
-        # if info:
-        #     for (tag, value) in info.items():
-        #         decoded = TAGS.get(tag, tag)
-    except:
-        pass
-
-
+    # exif_dict = piexif.load(img_file_name)
+    # print(exif_dict)
+    # for ifd in ("0th", "Exif", "GPS", "1st"):
+    #     for tag in exif_dict[ifd]:
+    #         print(piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
 # m = find_images('https://www.baidu.com')
 # f = download_image(m[0])
-test_for_exif('bd_logo1.png')
+test_for_exif('MOX_4550--.JPG')
 
